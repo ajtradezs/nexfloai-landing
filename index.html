@@ -652,6 +652,44 @@
       color: var(--grey);
     }
 
+    /* ── TECH STACK ── */
+    .techstack {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+    .techstack-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--grey);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .techstack-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .tech-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--teal);
+      background: rgba(0, 229, 202, 0.04);
+      letter-spacing: 0.02em;
+    }
+    .tech-chip svg { width: 13px; height: 13px; flex-shrink: 0; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -674,7 +712,28 @@
   <!-- ── NAV ── -->
   <nav>
     <div class="container nav-inner">
-      <a href="#" class="logo">NexFlo AI</a>
+      <a href="#" class="logo" aria-label="NexFlo AI">
+        <svg viewBox="0 0 248 38" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Left circuit decoration -->
+          <line x1="0" y1="19" x2="9" y2="19" stroke="#00E5CA" stroke-width="1.4"/>
+          <line x1="9" y1="7" x2="9" y2="31" stroke="#00E5CA" stroke-width="1.4"/>
+          <line x1="9" y1="7" x2="16" y2="7" stroke="#00E5CA" stroke-width="1.4"/>
+          <line x1="9" y1="31" x2="16" y2="31" stroke="#00E5CA" stroke-width="1.4"/>
+          <circle cx="0" cy="19" r="2.2" fill="#00E5CA"/>
+          <circle cx="16" cy="7" r="2.2" fill="#00E5CA"/>
+          <circle cx="16" cy="31" r="2.2" fill="#00E5CA"/>
+          <!-- Wordmark -->
+          <text x="22" y="27" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="800" font-style="italic" font-size="22" fill="#00E5CA" letter-spacing="-0.5">NexFlo AI</text>
+          <!-- Right circuit decoration -->
+          <line x1="232" y1="19" x2="241" y2="19" stroke="#00E5CA" stroke-width="1.4"/>
+          <line x1="232" y1="7" x2="232" y2="31" stroke="#00E5CA" stroke-width="1.4"/>
+          <line x1="232" y1="7" x2="225" y2="7" stroke="#00E5CA" stroke-width="1.4"/>
+          <line x1="232" y1="31" x2="225" y2="31" stroke="#00E5CA" stroke-width="1.4"/>
+          <circle cx="248" cy="19" r="2.2" fill="#00E5CA"/>
+          <circle cx="225" cy="7" r="2.2" fill="#00E5CA"/>
+          <circle cx="225" cy="31" r="2.2" fill="#00E5CA"/>
+        </svg>
+      </a>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
@@ -852,6 +911,35 @@
           <div class="stat-num">100%</div>
           <div class="stat-label">Custom — no off-the-shelf tools</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TECH STACK ── -->
+  <section class="techstack">
+    <div class="container">
+      <p class="techstack-label">Built With</p>
+      <div class="techstack-row">
+        <span class="tech-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          Claude Code
+        </span>
+        <span class="tech-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg>
+          n8n
+        </span>
+        <span class="tech-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Python
+        </span>
+        <span class="tech-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          REST APIs
+        </span>
+        <span class="tech-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          WhatsApp Business API
+        </span>
       </div>
     </div>
   </section>
