@@ -1060,6 +1060,7 @@
         </div>
         <button type="submit" class="btn btn-primary btn-lg form-submit">Book My Free Strategy Call →</button>
         <p class="form-note">No commitment. No sales pressure. Just a straight conversation about what's possible.</p>
+        <p id="form-error" style="display:none; color: var(--red); font-size:0.85rem; margin-top:12px; text-align:center;"></p>
       </form>
 
       <div id="form-success" style="display:none; text-align:center; padding: 48px 0;">
@@ -1084,12 +1085,58 @@
   </footer>
 
   <script>
-    function handleSubmit(e) {
+    // ─────────────────────────────────────────────────────────────────────────
+    // CONTACT FORM SETUP — Formspree (free tier: 50 submissions/month)
+    //
+    // To activate:
+    //   1. Go to https://formspree.io and sign up (free)
+    //   2. Create a new form — you'll get an ID like "xpzgkrba"
+    //   3. Replace YOUR_FORM_ID below with that ID
+    //
+    // ─────────────────────────────────────────────────────────────────────────
+    const FORMSPREE_ID = 'YOUR_FORM_ID';
+    const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
+
+    async function handleSubmit(e) {
       e.preventDefault();
       const form = document.getElementById('book-call');
+      const btn = form.querySelector('button[type="submit"]');
       const success = document.getElementById('form-success');
-      form.style.display = 'none';
-      success.style.display = 'block';
+      const errorMsg = document.getElementById('form-error');
+
+      // Guard: if not configured, show setup message
+      if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+        if (errorMsg) errorMsg.style.display = 'block';
+        errorMsg.textContent = 'Form not yet connected. See code comments for setup instructions.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      if (errorMsg) errorMsg.style.display = 'none';
+
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          const json = await res.json().catch(() => ({}));
+          throw new Error(json.error || 'Submission failed');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Book My Free Strategy Call →';
+        if (errorMsg) {
+          errorMsg.textContent = 'Something went wrong — please try again or email us directly.';
+          errorMsg.style.display = 'block';
+        }
+      }
     }
   </script>
 
