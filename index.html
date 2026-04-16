@@ -6,7 +6,7 @@
   <title>NexFlo AI — AI Automation & Consulting</title>
   <meta name="description" content="NexFlo AI builds custom automation systems, AI integrations, and dashboards that save your business real time and real money." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -705,6 +705,335 @@
     }
 
     .hero-tag::before { animation: pulse-dot 2s ease-in-out infinite; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ── SYSTEMS ONLINE PANEL ── */
+    .systems {
+      padding: 0 0 48px;
+      margin-top: -32px;
+    }
+    .systems-panel {
+      max-width: 720px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(15, 24, 32, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0, 229, 202, 0.06);
+    }
+    .systems-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(0, 229, 202, 0.03);
+    }
+    .systems-head-label {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .systems-head-meta {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.7rem;
+      color: var(--grey);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .systems-head-meta::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00E5A0;
+      box-shadow: 0 0 6px #00E5A0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .systems-list { display: flex; flex-direction: column; }
+    .system-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.82rem;
+      border-top: 1px solid rgba(0, 229, 202, 0.08);
+    }
+    .system-row:first-child { border-top: none; }
+    .system-name {
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+    }
+    .system-name::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00E5A0;
+      box-shadow: 0 0 6px #00E5A0;
+      flex-shrink: 0;
+      animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+    .system-row:nth-child(2) .system-name::before { animation-delay: 0.4s; }
+    .system-row:nth-child(3) .system-name::before { animation-delay: 0.8s; }
+    .system-row:nth-child(4) .system-name::before { animation-delay: 1.2s; }
+    .system-status { color: var(--grey); }
+    .system-meta { color: var(--teal); text-align: right; font-size: 0.75rem; letter-spacing: 0.02em; }
+    @media (max-width: 640px) {
+      .system-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 12px 16px;
+      }
+      .system-status, .system-meta { font-size: 0.72rem; padding-left: 18px; text-align: left; }
+    }
+
+    /* ── CASE STUDIES ── */
+    .work { padding: 96px 0; }
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 860px) {
+      .case-grid { grid-template-columns: 1fr; }
+    }
+    .case-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .case-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--teal);
+      box-shadow: 0 0 28px var(--teal-glow);
+    }
+    .case-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+    .case-kicker {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .case-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--teal);
+      background: var(--teal-dim);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 8px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .case-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      margin: 10px 0 16px;
+      letter-spacing: -0.01em;
+    }
+    .case-block-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .case-card p.case-text {
+      font-size: 0.9rem;
+      color: var(--grey);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .case-metrics {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.78rem;
+      color: var(--teal);
+      background: rgba(0, 229, 202, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 6px 0 16px;
+      letter-spacing: 0.02em;
+      line-height: 1.55;
+    }
+    .case-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .case-stack span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--grey);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 10px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── TESTIMONIAL DISCLAIMER ── */
+    .testimonials-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--grey);
+      font-style: italic;
+      margin-top: 32px;
+      opacity: 0.85;
+    }
+
+    /* ── ABOUT / FOUNDER ── */
+    .about { padding: 96px 0; }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: center;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (max-width: 760px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+    }
+    .about-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: var(--teal-dim);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--teal);
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 0 40px rgba(0, 229, 202, 0.1);
+    }
+    .about-copy h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .about-copy p {
+      color: var(--grey);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .about-copy p em {
+      color: var(--white);
+      font-style: italic;
+    }
+    .about-creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    @media (max-width: 760px) {
+      .about-creds { justify-content: center; }
+    }
+    .about-creds span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--teal);
+      background: rgba(0, 229, 202, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 5px 10px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── FAQ ── */
+    .faq { padding: 96px 0; background: var(--bg2); }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--teal); }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--teal);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 8px 24px;
+      color: var(--grey);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
   </style>
 </head>
 <body>
@@ -737,7 +1066,9 @@
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#testimonials">Results</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
       <a href="#book-call" class="btn btn-primary">Book a Free Call</a>
     </div>
@@ -759,6 +1090,42 @@
       <div class="hero-ctas">
         <a href="#book-call" class="btn btn-primary btn-lg">Book a Free Strategy Call</a>
         <a href="#services" class="btn btn-outline btn-lg">See What We Build</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SYSTEMS ONLINE PANEL ──
+       Representative live-operations signal. Values are static strings by design —
+       future enhancement can wire to a /status.json endpoint for real-time data. -->
+  <section class="systems">
+    <div class="container">
+      <div class="systems-panel reveal">
+        <div class="systems-head">
+          <span class="systems-head-label">Systems Online</span>
+          <span class="systems-head-meta">All services operational</span>
+        </div>
+        <div class="systems-list">
+          <div class="system-row">
+            <span class="system-name">Retail Shift Sync</span>
+            <span class="system-status">synced 12m ago</span>
+            <span class="system-meta">300 stores</span>
+          </div>
+          <div class="system-row">
+            <span class="system-name">Attendance Tracker</span>
+            <span class="system-status">uptime 99.9%</span>
+            <span class="system-meta">PM2 daemon</span>
+          </div>
+          <div class="system-row">
+            <span class="system-name">WhatsApp Lead Qual</span>
+            <span class="system-status">47 convos today</span>
+            <span class="system-meta">live</span>
+          </div>
+          <div class="system-row">
+            <span class="system-name">PaperSync</span>
+            <span class="system-status">3 firms onboarding</span>
+            <span class="system-meta">go-live May 2026</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -896,19 +1263,19 @@
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item">
-          <div class="stat-num">10×</div>
+          <div class="stat-num" data-target="10" data-suffix="×">10×</div>
           <div class="stat-label">Faster than traditional dev</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">40hrs</div>
+          <div class="stat-num" data-target="40" data-suffix="hrs">40hrs</div>
           <div class="stat-label">Avg. saved per week per client</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">14 days</div>
+          <div class="stat-num" data-target="14" data-suffix=" days">14 days</div>
           <div class="stat-label">Typical time to first deployment</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">100%</div>
+          <div class="stat-num" data-target="100" data-suffix="%">100%</div>
           <div class="stat-label">Custom — no off-the-shelf tools</div>
         </div>
       </div>
@@ -940,6 +1307,84 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           WhatsApp Business API
         </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CASE STUDIES / OUR WORK ── -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Selected Work</span>
+        <h2>Systems running<br />in production right now.</h2>
+        <p>Every engagement ends in working software. Here's a sample of what we've shipped.</p>
+      </div>
+      <div class="case-grid">
+
+        <article class="case-card reveal">
+          <div class="case-header">
+            <span class="case-kicker">Case Study / Retail Ops</span>
+            <span class="case-badge">In Production</span>
+          </div>
+          <h3>Retail Operations Automation</h3>
+          <div class="case-block-label">Client</div>
+          <p class="case-text">National 300-store retail group. HR team was spending 40+ hours/week manually syncing shift schedules across a Google Sheet per store.</p>
+          <div class="case-block-label">What we built</div>
+          <p class="case-text">Python + Claude Vision automation orchestrating three daily sync jobs (16:00 sync, 17:00 audit, 18:00 sync), running as PM2 daemons. Rate-limiting, auto-correction of wrong-store placements, and daily email reporting.</p>
+          <div class="case-metrics">300 stores · 1,000+ shifts/day · 40 hrs/wk saved · 99.9% uptime</div>
+          <div class="case-stack">
+            <span>Python</span><span>Google Sheets API</span><span>Claude Vision</span><span>PM2</span><span>GitHub Actions</span>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-header">
+            <span class="case-kicker">Own Product / SaaS</span>
+            <span class="case-badge">Launching May 2026</span>
+          </div>
+          <h3>PaperSync — Document Collection</h3>
+          <div class="case-block-label">Context</div>
+          <p class="case-text">Accounting firms chase clients for documents over email for weeks. Onboarding drags on, revenue sits in limbo, and nobody can see where a request actually is.</p>
+          <div class="case-block-label">What we built</div>
+          <p class="case-text">Full SaaS web app with per-client portals, automated reminder flows, request templating, and a practice-tier management layer. Free tier to Practice tier conversion built in.</p>
+          <div class="case-metrics">3 firms onboarding · Go-live 1 May 2026 · 91% margin at scale</div>
+          <div class="case-stack">
+            <span>Next.js</span><span>Formspree</span><span>Anthropic API</span><span>Tailwind</span>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-header">
+            <span class="case-kicker">Case Study / Messaging</span>
+            <span class="case-badge">24/7 Live</span>
+          </div>
+          <h3>WhatsApp Business Automation</h3>
+          <div class="case-block-label">Clients</div>
+          <p class="case-text">Field-ops and sales teams across multiple clients. Customer conversations, attendance check-ins, and lead qualification all happening in WhatsApp — but invisible to any system.</p>
+          <div class="case-block-label">What we built</div>
+          <p class="case-text">Production WhatsApp Business API bots — attendance tracker, lead qualification flows, field-rep check-ins — each running as a PM2 daemon with full conversation logging and handoff to humans when needed.</p>
+          <div class="case-metrics">60% inbound auto-qualified · 5 bots in production · 24/7 uptime</div>
+          <div class="case-stack">
+            <span>WhatsApp Business API</span><span>Node.js</span><span>PM2</span><span>Claude API</span>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="case-header">
+            <span class="case-kicker">Own Asset / Lead-Gen</span>
+            <span class="case-badge">Shipping Weekly</span>
+          </div>
+          <h3>Custom Demo Site Pipeline</h3>
+          <div class="case-block-label">Context</div>
+          <p class="case-text">Cold outreach to SMBs needs more than a generic pitch. Prospects need to see what's possible for their specific business — and they need to see it fast.</p>
+          <div class="case-block-label">What we built</div>
+          <p class="case-text">End-to-end pipeline that scrapes prospects via Outscraper, generates custom demo sites deployed to GitHub Pages, and pairs each with a templated WhatsApp outreach message — all in under 2 hours per prospect.</p>
+          <div class="case-metrics">167 leads in campaign · 3 demos shipped/week · Sub-2hr build per demo</div>
+          <div class="case-stack">
+            <span>Outscraper</span><span>GitHub Pages</span><span>Instantly.ai</span><span>WhatsApp</span><span>HTML/CSS</span>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -1014,6 +1459,66 @@
         </div>
 
       </div>
+      <p class="testimonials-note">Representative client scenarios. Real case studies featured in the "Our Work" section above.</p>
+    </div>
+  </section>
+
+  <!-- ── ABOUT / FOUNDER ── -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Who Builds This</span>
+      </div>
+      <div class="about-inner reveal">
+        <!-- Swap the initials block below for an <img> once a real photo is available -->
+        <div class="about-avatar" aria-hidden="true">AJ</div>
+        <div class="about-copy">
+          <h2>Built by operators,<br />not consultants.</h2>
+          <p>I'm Aidan — founder of NexFlo AI. By day I run shift sync and attendance for a 300-store retail operation. That's not a case study I bought — it's the problem I was already solving before NexFlo existed.</p>
+          <p>Every system we build goes through the same filter: <em>would this actually work in my own operation?</em> No demo-ware. No "enterprise" features nobody uses. Just automation that survives Monday morning.</p>
+          <div class="about-creds">
+            <span>5 PM2 daemons in production</span>
+            <span>300+ stores managed</span>
+            <span>1,000+ shifts/day</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">FAQ</span>
+        <h2>The questions<br />everyone asks first.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>How much does it cost?</summary>
+          <div class="faq-answer">Most builds land between R50K and R80K once-off, depending on scope. We scope each engagement in the strategy call — no "starting from" pricing that means nothing.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How fast can you actually ship?</summary>
+          <div class="faq-answer">First working prototype in 5–7 days. Production deployment in 2–3 weeks for most builds. We ship in weekly slices, not quarterly Gantt charts.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What if I already have a tech stack?</summary>
+          <div class="faq-answer">Good. We integrate — we don't rip-and-replace. Our builds already sit on top of Google Workspace, HubSpot, Airtable, WhatsApp Business, Xero, custom SQL — whatever you've got.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What happens when something breaks?</summary>
+          <div class="faq-answer">Every system we deploy has monitoring baked in. We stay available for iteration and support after handover. Most clients keep us on a light monthly retainer; no one is required to.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you work with businesses outside South Africa?</summary>
+          <div class="faq-answer">Yes — we work async with clients globally. Most communication is over Slack, Loom, and scheduled calls.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is this just ChatGPT in a trench coat?</summary>
+          <div class="faq-answer">No. We use Claude Code and the Anthropic API as build accelerators, but what we ship is production software: Python, Node, real APIs, real databases, real uptime. AI is how we build fast; it's not the product.</div>
+        </details>
+      </div>
     </div>
   </section>
 
@@ -1077,7 +1582,9 @@
       <a href="#" class="footer-logo">NexFlo AI</a>
       <ul class="footer-links">
         <li><a href="#services">Services</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#book-call">Contact</a></li>
       </ul>
       <p class="footer-copy">© 2026 NexFlo AI. All rights reserved.</p>
@@ -1138,6 +1645,65 @@
         }
       }
     }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // SCROLL REVEAL — fade-up on elements tagged with .reveal when they enter view
+    // ─────────────────────────────────────────────────────────────────────────
+    (function () {
+      const items = document.querySelectorAll('.reveal');
+      if (!items.length || !('IntersectionObserver' in window)) {
+        items.forEach(el => el.classList.add('in'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      items.forEach(el => io.observe(el));
+    })();
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // STATS COUNTER — animate .stat-num from 0 to data-target on scroll-in
+    // ─────────────────────────────────────────────────────────────────────────
+    (function () {
+      const nums = document.querySelectorAll('.stat-num[data-target]');
+      if (!nums.length) return;
+
+      const animate = (el) => {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const start = performance.now();
+
+        const tick = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+          const value = Math.floor(eased * target);
+          el.textContent = value + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = target + suffix;
+        };
+        requestAnimationFrame(tick);
+      };
+
+      if (!('IntersectionObserver' in window)) {
+        nums.forEach(animate);
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animate(entry.target);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      nums.forEach(el => io.observe(el));
+    })();
   </script>
 
 </body>
